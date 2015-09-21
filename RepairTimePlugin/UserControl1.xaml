@@ -11,10 +11,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Horizontal">
-        <!--
-        <TextBlock Text="コメント: "/>
-        <TextBlock Text="{Binding Comment}"/>
-        -->
         <ItemsControl ItemsSource="{Binding FirstFleet}" Grid.IsSharedSizeScope="True">
             <ItemsControl.Template>
                 <ControlTemplate TargetType="{x:Type ItemsControl}">
@@ -25,13 +21,25 @@
             </ItemsControl.Template>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock FontSize="20">
-				        <Run Text="{Binding Info.Name, Mode=OneWay}" />
-                        <Run Text=" " />
-                        <Run Text="{Binding HP.Current, Mode=OneWay}" />
-						<Run Text="/" />
-						<Run Text="{Binding HP.Maximum, Mode=OneWay}" />
-                    </TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" FontSize="20" Margin="10,10,10,10">
+				            <Run Text="{Binding Info.Name, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="2" FontSize="20" Margin="10,10,10,10">
+				            <Run Text="{Binding HP.Current, Mode=OneWay}"/>
+						    <Run Text="/" />
+						    <Run Text="{Binding HP.Maximum, Mode=OneWay}" />
+                        </TextBlock>
+                        <TextBlock Grid.Column="3" FontSize="20" Margin="10,10,10,10">
+				            <Run Text="{Binding RepairTime, Mode=OneWay}" />
+                        </TextBlock>
+                    </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

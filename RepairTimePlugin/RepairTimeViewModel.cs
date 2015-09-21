@@ -14,8 +14,8 @@ namespace RepairTimePlugin
     public class RepairTimeViewModel : ViewModel
     {
         #region FirstFleet 変更通知プロパティ
-        private Ship[] _Ship;
-        public Ship[] FirstFleet
+        private List<RepairTimeInfo> _Ship;
+        public List<RepairTimeInfo> FirstFleet
         {
             get { return _Ship;}
             set
@@ -38,7 +38,7 @@ namespace RepairTimePlugin
         }
         public void InitializeFleets()
         {
-            FirstFleet = KanColleClient.Current.Homeport.Organization.Fleets.Values.First().Ships;
+            UpdateShips();
 
             this.CompositeDisposable.Add(new PropertyChangedEventListener(KanColleClient.Current.Homeport.Organization)
             {
@@ -48,12 +48,23 @@ namespace RepairTimePlugin
                 }
             });
         }
+        private void UpdateShips()
+        {
+            var ships = KanColleClient.Current.Homeport.Organization.Fleets.Values.First().Ships;
+            var newShips = new List<RepairTimeInfo>();
+            foreach (var ship in ships)
+            {
+                newShips.Add(new RepairTimeInfo(ship));
+            }
+
+            FirstFleet = newShips;
+        }
 
         private void UpdateView()
         {
             if (!KanColleClient.Current.IsStarted) return;
 
-            FirstFleet = KanColleClient.Current.Homeport.Organization.Fleets.Values.First().Ships;
+            UpdateShips();
         }
 
     }

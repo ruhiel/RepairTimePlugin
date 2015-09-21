@@ -136,6 +136,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="RepairTimeInfo.cs" />
     <Compile Include="RepairTimePlugin.cs" />
     <Compile Include="RepairTimeViewModel.cs" />
     <Compile Include="UserControl1.xaml.cs">
