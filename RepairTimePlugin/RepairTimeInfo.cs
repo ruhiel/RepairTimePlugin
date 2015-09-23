@@ -23,6 +23,9 @@ namespace RepairTimePlugin
         // 概要:
         //     艦娘の種類に基づく情報を取得します。
         public ShipInfo Info { get; }
+        //
+        // 概要:
+        //     コンストラクタ
         public RepairTimeInfo(Ship ship)
         {
             HP = ship.HP;
@@ -62,6 +65,9 @@ namespace RepairTimePlugin
             }
 
         }
+        //
+        // 概要:
+        //     修理時間を時:分:秒形式で取得します。
         public string RepairTime
         {
             get
@@ -85,10 +91,16 @@ namespace RepairTimePlugin
             }
             
         }
+        //
+        // 概要:
+        //     減少HPを取得します。
         private int Damage
         {
             get { return HP.Maximum - HP.Current; }
         }
+        //
+        // 概要:
+        //     レベル補正を取得します。
         private int LevelCorrect
         {
             get

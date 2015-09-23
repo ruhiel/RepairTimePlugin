@@ -24,11 +24,18 @@ namespace RepairTimePlugin
     [Export(typeof(ITool))]
     public class RepairTimePlugin : NotificationObject, IPlugin, ITool
     {
+        //
+        // 概要:
+        //     [ツール] タブ内に表示される UI のルート要素を取得します。
         public object View => new UserControl1 { DataContext = new RepairTimeViewModel(), };
-        public string Name => "RepairTimePlugin";
+        //
+        // 概要:
+        //     [ツール] タブのツール一覧に表示される名前を取得します。
+        public string Name => "RepairTime";
 
-        /*
-        */
+        //
+        // 概要:
+        //     プラグインの初期化処理を実行します。
         public void Initialize()
         {
         }
