@@ -1,6 +1,8 @@
 # RepairTimePlugin
 KanColleViewer用の泊地修理時間を表示するプラグインです。
 
+![サンプル](https://github.com/ruhiel/RepairTimePlugin/blob/master/images/sample.png)
+
 ### インストール
 
 * `RepairTimePlugin.dll` を KanColleViewer の `Plugins` ディレクトリに放り込んで下さい。
